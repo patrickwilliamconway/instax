@@ -1,0 +1,5 @@
+.idea/
+__pycache__/
+.DS_Store
+scripts/photo/script_secrets.json
+scripts/scan/demo/instax_parsing/*
