@@ -4,9 +4,33 @@ This Python script allows you to modify metadata in JPEG images. You can update 
 
 ## Features
 
-- Update GPS coordinates based on location input
-- Modify date and time metadata
-- Add custom annotations to photos
+### Update GPS coordinates based on location input
+
+You can specify a file `scripts/photo/script_secret.json` and add a field `common_locations` like this
+```json
+{
+    "common_locations": {
+        "0": "123 Main St New York, NY",
+        "1": "1600 Pennsylvania Ave",
+        "2": "Statue of Liberty, NY"
+    }
+}
+```
+so that when you are prompted for locations, you have frequent ones available. 
+
+`GeoPy` is great - it is very flexible with what inputs it accepts. For example:
+```shell
+2024-02-26 21:55:09 - INFO - Based on input: the white house, found: White House, 1600, Pennsylvania Avenue 
+Northwest, Ward 2, Washington, District of Columbia, 20500, United States
+```
+
+### Modify date and time metadata
+You'll input: Day, Month, Year, Time of Day (morning, afternoon, evening). 
+
+### Add custom annotations to photos
+This doesn't work as well as I had hoped. It saves the annotation as part of the file, but applications like Apple 
+Photos and Google Photos don't use them as the "description" fields. Oh well.
+
 
 ## Usage
 Run the script with the following command:
