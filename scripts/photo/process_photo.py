@@ -234,8 +234,8 @@ geo_cache = {}
 
 # Determine if input was a cache entry (indexed by number) or new location
 def process_input_location(prompt_input):
-    if prompt_input.isdigit() and int(prompt_input) in common_locations:
-        return common_locations[int(prompt_input)]
+    if prompt_input.isdigit() and prompt_input in common_locations:
+        return common_locations[prompt_input]
     else:
         return prompt_input
 
