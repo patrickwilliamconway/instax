@@ -234,10 +234,11 @@ geo_cache = {}
 
 # Determine if input was a cache entry (indexed by number) or new location
 def process_input_location(prompt_input):
-    if prompt_input.isdigit() and prompt_input in common_locations:
-        return common_locations[prompt_input]
+    str_input = str(prompt_input)
+    if str_input.isdigit() and str_input in common_locations:
+        return common_locations[str_input]
     else:
-        return prompt_input
+        return str_input
 
 
 # Query GeoPy for location
@@ -301,7 +302,7 @@ def location(file):
         location_prompt = f'Choose index from common_locations: {json.dumps(loc_str, indent=1)}. Or, input a location'
         prompt_input = click.prompt(
             text=location_prompt,
-            type=click.Choice(list(map(lambda x: str(x), common_locations.keys()))),
+            type=click.Choice(list(common_locations.keys())),
             show_choices=False,
             value_proc=process_input_location
         )
@@ -312,7 +313,7 @@ def location(file):
 
         if input_ok:
             if prompt_input not in common_locations.values():
-                new_loc_idx = len(common_locations)
+                new_loc_idx = str(len(common_locations))
                 common_locations[new_loc_idx] = prompt_input
 
             return data
